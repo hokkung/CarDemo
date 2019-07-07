@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CarDemo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Google -->
+    <string name="google_map_apis_key">AIzaSyB96KqUoHaNlpAvG2tY0wOqKMiKfHrJxyY</string>
+</resources>
