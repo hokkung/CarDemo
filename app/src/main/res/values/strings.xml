@@ -15,6 +15,24 @@
     <string name="shop">Shop</string>
     <string name="setting">Setting</string>
 
+    <!-- Setting Page -->
+    <string name="your_fav_shop">My favourite shop</string>
+    <string name="add_my_shop">Add shop</string>
+    <string name="language">Language</string>
+    <string name="search_filter">Search filter</string>
+    <string name="filter">Filter</string>
+
+    <!-- Add shop Page -->
+    <string name="name_shop">Name shop</string>
+    <string name="type_shop">Type shop</string>
+    <string name="car">Car</string>
+    <string name="motorcycle">Motorcycle</string>
+    <string name="categoty_shop">Category shop</string>
+    <string name="address">Address</string>
+    <string name="add_shop">Add shop</string>
+    <string name="fill_in_data">Fill in data</string>
+
+
     <!-- Search -->
     <string name="search_shop">Search shop</string>
 

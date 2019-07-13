@@ -15,6 +15,7 @@ import com.example.hokkung.cardemo.activity.AddShopActivity
 import com.example.hokkung.cardemo.adapter.FavouriteAdapter
 import com.example.hokkung.cardemo.extension.launchActivity
 import com.example.hokkung.cardemo.pref.SharedPrefManager
+import com.example.hokkung.cardemo.utils.LocaleManager
 import com.example.hokkung.cardemo.viewmodel.MainMenuViewModel
 import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
@@ -32,7 +33,7 @@ class SettingFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_setting, container, false)
         initViewModel()
         initRecyclerView(view)
-        initLanguageSetting(view)
+        initSetting(view)
         return view
     }
 
@@ -51,21 +52,33 @@ class SettingFragment : Fragment() {
         view.favouriteRecyclerView.adapter = favouriteAdapter
     }
 
-    private fun initLanguageSetting(view: View) {
-        view.language.text = SharedPrefManager.getLanguagePref(view.context)
+    private fun initSetting(view: View) {
+        val context = view.context
+        val lan = SharedPrefManager.getLanguagePref(context)
+        view.language.text = LocaleManager.mappingLanguageReverse(context, lan)
+
+        view.settingFilter.setOnClickListener {
+            launchFilterDialog()
+        }
 
         view.settingAddShop.setOnClickListener {
             activity?.launchActivity(AddShopActivity::class.java)
         }
 
         view.settingLanguage.setOnClickListener {
-            launchBottomDialog()
+            launchLanguageDialog()
         }
     }
 
-    private fun launchBottomDialog() {
+    private fun launchLanguageDialog() {
         val languageFragment = LanguageFragment()
         languageFragment.show(fragmentManager!!, languageFragment.tag)
+
+    }
+
+    private fun launchFilterDialog() {
+        val filterFragment = FilterFragment()
+        filterFragment.show(fragmentManager!!, filterFragment.tag)
 
     }
 

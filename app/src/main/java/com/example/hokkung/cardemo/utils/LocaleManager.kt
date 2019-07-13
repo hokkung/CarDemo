@@ -28,6 +28,15 @@ object LocaleManager {
         return if (Build.VERSION.SDK_INT >= 24) config.locales.get(0) else config.locale
     }
 
+    fun mappingLanguageReverse(context: Context, language: String): String {
+        val languages = context.resources.getStringArray(R.array.languages)
+        return when (language) {
+            LANGUAGE_THAI -> languages[0]
+            LANGUAGE_ENGLISH -> languages[1]
+            else -> languages[1]
+        }
+    }
+
     fun mappingLanguage(context: Context, language: String): String {
         val languages = context.resources.getStringArray(R.array.languages)
         return when (language) {

@@ -13,13 +13,14 @@ import com.example.hokkung.cardemo.adapter.CategoryAdapter
 import com.example.hokkung.cardemo.adapter.TypeAdapter
 import com.example.hokkung.cardemo.model.Category
 import com.example.hokkung.cardemo.model.Type
+import com.example.hokkung.cardemo.utils.BaseActivity
 import com.example.hokkung.cardemo.utils.GoogleMapCallback
 import com.example.hokkung.cardemo.utils.TouchMapFragment
 import com.example.hokkung.cardemo.viewmodel.AddShopViewModel
 import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.activity_add_car.*
 
-class AddShopActivity : AppCompatActivity(), CategoryAdapter.OnCategoryCheckListener, TypeAdapter.OnTypeClickListener {
+class AddShopActivity : BaseActivity(), CategoryAdapter.OnCategoryCheckListener, TypeAdapter.OnTypeClickListener {
 
     val tag by lazy { this::class.java.name }
     private lateinit var categoryAdapter: CategoryAdapter
@@ -48,7 +49,7 @@ class AddShopActivity : AppCompatActivity(), CategoryAdapter.OnCategoryCheckList
     }
 
     private fun initView() {
-        title = "Add Shop"
+        title = getString(R.string.add_my_shop)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -61,7 +62,7 @@ class AddShopActivity : AppCompatActivity(), CategoryAdapter.OnCategoryCheckList
                 }
             } else {
                 scrollView.smoothScrollTo(nameshop.left, nameshop.top)
-                nameshop.error = "Fill in data"
+                nameshop.error = getString(R.string.fill_in_data)
                 nameshop.requestFocus()
             }
         }

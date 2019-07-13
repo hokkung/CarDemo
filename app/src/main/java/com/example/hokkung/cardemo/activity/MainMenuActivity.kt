@@ -20,6 +20,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main_menu.*
 import java.util.*
 
+
+
 class MainMenuActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     private val tag by lazy { "MainMenuActivity" }
     private val carFragment by lazy { CarFragment() }
@@ -32,13 +34,10 @@ class MainMenuActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSe
         initView()
         initBottomNavigate()
         initViewModel()
-        log(tag, SharedPrefManager.getLanguagePref(applicationContext))
-        log(tag, Locale.getDefault().language)
 
     }
 
     private fun initView() {
-        title = ""
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
     }
 
@@ -64,23 +63,4 @@ class MainMenuActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSe
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.top_main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
-            R.id.add_menu -> {
-                launchActivity(AddShopActivity::class.java)
-                true
-            }
-            R.id.search_menu -> {
-                launchActivity(SearchActivity::class.java)
-                true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
 }

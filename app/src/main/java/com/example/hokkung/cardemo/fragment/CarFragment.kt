@@ -31,17 +31,17 @@ class CarFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_car, container, false)
         initRecyclerView(view)
-        getShopAll()
+        initRefreshView(view)
+        initViewModel()
         return view
     }
 
-    private fun getShopAll() {
+    private fun initViewModel() {
         vm = activity?.run {
             ViewModelProviders.of(this).get(MainMenuViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
-        vm?.getAllShop()?.observe(this, Observer {
-            shopCarAdapter?.submitList(it)
-        })
+
+        getAllShop()
     }
 
     private fun initRecyclerView(view: View) {
@@ -50,13 +50,25 @@ class CarFragment : Fragment() {
         view.recyclerView.adapter = shopCarAdapter
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-//        activity?.let {
-//            vm = ViewModelProviders.of(it).get(MainMenuViewModel::class.java)
-//        }
+    private fun initRefreshView(view: View) {
+        view.swipeRefreshView.setOnRefreshListener {
+            getAllShop()
+        }
     }
 
+    private fun getAllShop() {
+        vm?.getAllShop()?.  observe(this, Observer {
+            shopCarAdapter?.submitList(it)
+            disabledRefreshView()
+        })
+    }
 
+    private fun disabledRefreshView() {
+        activity?.runOnUiThread {
+            view?.swipeRefreshView?.let {
+                if (it.isRefreshing) it.isRefreshing = false
+            }
+        }
+    }
 
 }

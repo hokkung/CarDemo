@@ -16,6 +16,23 @@
     <string name="shop">ร้าน</string>
     <string name="setting">ตั้งค่า</string>
 
+    <!-- Setting Page -->
+    <string name="your_fav_shop">ร้านทีถูกใจ</string>
+    <string name="add_my_shop">เพิ่มร้านของฉัน</string>
+    <string name="language">ภาษา</string>
+    <string name="search_filter">คัดกรองการค้นหา</string>
+    <string name="filter">คัดกรอง</string>
+
+    <!-- Add shop Page -->
+    <string name="name_shop">ชื่อร้าน</string>
+    <string name="type_shop">ประเภทรถ</string>
+    <string name="car">รถ</string>
+    <string name="motorcycle">มอเตอร์ไซต์</string>
+    <string name="categoty_shop">ประเภทร้าน</string>
+    <string name="address">ที่อยู่</string>
+    <string name="add_shop">เพิ่มร้าน</string>
+    <string name="fill_in_data">กรอกข้อมูล</string>
+
     <!-- Search -->
     <string name="search_shop">ค้นหาร้าน</string>
 </resources>
