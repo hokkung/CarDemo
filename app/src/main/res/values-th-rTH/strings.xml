@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App name -->
     <string name="app_name">CarDemo</string>
@@ -12,10 +13,9 @@
     </string-array>
 
     <!-- Bottom Navigate -->
-    <string name="shop">Shop</string>
-    <string name="setting">Setting</string>
+    <string name="shop">ร้าน</string>
+    <string name="setting">ตั้งค่า</string>
 
     <!-- Search -->
-    <string name="search_shop">Search shop</string>
-
+    <string name="search_shop">ค้นหาร้าน</string>
 </resources>

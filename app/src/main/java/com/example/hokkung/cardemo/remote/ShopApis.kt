@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface ShopApis {
-    @GET("posts/")
+    @GET("users")
     fun getAllShops(): Observable<List<Shop>>
 
     @GET("users")

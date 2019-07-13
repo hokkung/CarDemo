@@ -2,6 +2,7 @@ package com.example.hokkung.cardemo.extension
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.hokkung.cardemo.R
@@ -17,4 +18,8 @@ fun AppCompatActivity.launchFragment(fragment: Fragment) {
 fun <T> Context.launchActivity(activity: Class<T>) {
     val intent = Intent(this, activity)
     startActivity(intent)
+}
+
+fun AppCompatActivity.log(tag: String, message: String) {
+    Log.v(tag, message)
 }

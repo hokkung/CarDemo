@@ -1,8 +1,12 @@
 package com.example.hokkung.cardemo.model
 
-data class Shop(
+import androidx.room.Ignore
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
+data class Shop (
+    @SerializedName("id")
     val id: Int,
-    val name: String,
-    val image: String,
-    val ranking: Int
+    @SerializedName("name")
+    val name: String
 )

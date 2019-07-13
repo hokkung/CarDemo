@@ -1,25 +1,22 @@
 package com.example.hokkung.cardemo.viewmodel
 
-import android.annotation.SuppressLint
 import android.app.Application
 import android.location.Address
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.hokkung.cardemo.R
 import com.example.hokkung.cardemo.model.Category
 import com.example.hokkung.cardemo.model.Type
 import com.example.hokkung.cardemo.remote.ShopApis
-import com.example.hokkung.cardemo.repostitory.CategoryRepository
+import com.example.hokkung.cardemo.repostitory.CarShopRepository
 import io.reactivex.schedulers.Schedulers
-import java.util.*
 
 class AddShopViewModel(application: Application) : AndroidViewModel(application) {
 
     private val tag by lazy { "AddShopViewModel" }
     private val remote = ShopApis.call()
-    private val repository: CategoryRepository = CategoryRepository(remote)
+    private val repository: CarShopRepository = CarShopRepository(remote)
 
     private val categoriesMutableLiveData: MutableLiveData<List<Category>> = MutableLiveData()
     private val typesLiveData: MutableLiveData<List<Type>> = MutableLiveData()

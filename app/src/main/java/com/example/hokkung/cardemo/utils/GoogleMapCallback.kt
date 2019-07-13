@@ -31,7 +31,7 @@ class GoogleMapCallback(val context: Context) : OnMapReadyCallback, GoogleMap.On
     fun getCurrentLocation() {
         try {
             val location = fusedLocationProvider?.lastLocation
-            location?.addOnCompleteListener {
+            location?.addOnCompleteListener { it ->
                 if (it.isSuccessful) {
                     val currentLocation: Location? = it.result
                     currentLocation?.let {
@@ -39,7 +39,7 @@ class GoogleMapCallback(val context: Context) : OnMapReadyCallback, GoogleMap.On
                         moveCamera(latlng)
                         addMarker(latlng, address = getAddress(latlng))
                     }
-                    Log.v(tag, currentLocation?.toString())
+                    currentLocation?.let { Log.v(tag, it.toString()) }
                 } else {
                     Log.e(tag, "cannot get location")
                 }

@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.example.hokkung.cardemo.R
+import com.example.hokkung.cardemo.utils.BaseActivity
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,7 +15,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        title = "Search Shop"
+        title = getString(R.string.search_shop)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
