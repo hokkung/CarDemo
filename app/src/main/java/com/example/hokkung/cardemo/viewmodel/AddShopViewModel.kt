@@ -21,6 +21,10 @@ class AddShopViewModel(application: Application) : AndroidViewModel(application)
     private val categoriesMutableLiveData: MutableLiveData<List<Category>> = MutableLiveData()
     private val typesLiveData: MutableLiveData<List<Type>> = MutableLiveData()
 
+    init {
+        fetchAllCategoryFromServer()
+    }
+
 
     fun createCarShop(name: String, address: Address) {
         Log.v(tag, address.toString())
@@ -41,21 +45,21 @@ class AddShopViewModel(application: Application) : AndroidViewModel(application)
         Log.v(tag, categoriesMutableLiveData.value.toString())
     }
 
-    fun getAllCategories(): LiveData<List<Category>> {
+    fun fetchAllCategoryFromServer() {
         repository.getAllCategories()
             .subscribeOn(Schedulers.io())
             .subscribe{
                 categoriesMutableLiveData.postValue(it)
             }
-        return categoriesMutableLiveData
     }
+
+    fun getAllCategories(): LiveData<List<Category>> = categoriesMutableLiveData
 
 
     fun getAllTypes(init: Boolean = false): LiveData<List<Type>> {
         if (init) {
             typesLiveData.postValue(repository.getAllTypes())
         }
-
         return typesLiveData
     }
 

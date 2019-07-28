@@ -29,7 +29,6 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_setting, container, false)
         initViewModel()
         initRecyclerView(view)
@@ -41,6 +40,7 @@ class SettingFragment : Fragment() {
         vm = activity?.run {
             ViewModelProviders.of(this).get(MainMenuViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
+
         vm?.getAllFavouriteShop()?.observe(this, Observer {
             favouriteAdapter.submitList(it)
         })
@@ -77,9 +77,8 @@ class SettingFragment : Fragment() {
     }
 
     private fun launchFilterDialog() {
-        val filterFragment = FilterFragment()
+        val filterFragment = FilterFragment(vm)
         filterFragment.show(fragmentManager!!, filterFragment.tag)
-
     }
 
 

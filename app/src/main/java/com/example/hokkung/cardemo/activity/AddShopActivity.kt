@@ -23,9 +23,10 @@ import kotlinx.android.synthetic.main.activity_add_car.*
 class AddShopActivity : BaseActivity(), CategoryAdapter.OnCategoryCheckListener, TypeAdapter.OnTypeClickListener {
 
     val tag by lazy { this::class.java.name }
-    private lateinit var categoryAdapter: CategoryAdapter
-    private lateinit var typeAdapter: TypeAdapter
-    private lateinit var vm: AddShopViewModel
+    private var categoryAdapter = CategoryAdapter(this)
+    private var typeAdapter = TypeAdapter(this)
+
+    private var vm: AddShopViewModel? = null
     private val googleMap by lazy { GoogleMapCallback(applicationContext) }
 
 
@@ -40,11 +41,11 @@ class AddShopActivity : BaseActivity(), CategoryAdapter.OnCategoryCheckListener,
     }
 
     override fun onClickCheckbox(item: Category) {
-        vm.updateCategories(item)
+        vm?.updateCategories(item)
     }
 
     override fun onItemClick(item: Type) {
-        vm.updateTypeCar(item)
+        vm?.updateTypeCar(item)
         typeAdapter.notifyDataSetChanged()
     }
 
@@ -58,7 +59,7 @@ class AddShopActivity : BaseActivity(), CategoryAdapter.OnCategoryCheckListener,
             val name = nameshop.text.toString().trim()
             if (name.isNotEmpty()) {
                 googleMap.getLocationToSave()?.let {
-                    vm.createCarShop(name, it)
+                    vm?.createCarShop(name, it)
                 }
             } else {
                 scrollView.smoothScrollTo(nameshop.left, nameshop.top)
@@ -86,11 +87,11 @@ class AddShopActivity : BaseActivity(), CategoryAdapter.OnCategoryCheckListener,
     private fun initViewModel() {
         vm = ViewModelProviders.of(this).get(AddShopViewModel::class.java)
 
-        vm.getAllTypes(init = true).observe(this, Observer {
+        vm?.getAllTypes(init = true)?.observe(this, Observer {
             typeAdapter.submitList(it)
         })
 
-        vm.getAllCategories().observe(this, Observer {
+        vm?.getAllCategories()?.observe(this, Observer {
             categoryAdapter.submitList(it)
         })
     }
@@ -98,15 +99,12 @@ class AddShopActivity : BaseActivity(), CategoryAdapter.OnCategoryCheckListener,
 
     private fun initRecyclerView() {
         typeRecyclerView.layoutManager = GridLayoutManager(applicationContext, 2)
-        typeAdapter = TypeAdapter(this)
         typeRecyclerView.adapter = typeAdapter
 
 
         recyclerView.layoutManager = GridLayoutManager(applicationContext, 2)
-        categoryAdapter = CategoryAdapter(this)
         recyclerView.adapter = categoryAdapter
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {

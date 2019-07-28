@@ -1,6 +1,7 @@
 <resources>
     <!-- App name -->
     <string name="app_name">CarDemo</string>
+    <string name="exit_app">Please click back again to exit.</string>
 
     <!-- Google -->
     <string name="google_map_apis_key">AIzaSyB96KqUoHaNlpAvG2tY0wOqKMiKfHrJxyY</string>
@@ -31,9 +32,15 @@
     <string name="address">Address</string>
     <string name="add_shop">Add shop</string>
     <string name="fill_in_data">Fill in data</string>
+    <string name="address_detail">Please pick your shop location on map</string>
 
 
     <!-- Search -->
     <string name="search_shop">Search shop</string>
+
+
+    <!-- Filter -->
+    <string name="range">Range</string>
+    <string name="km">Km.</string>
 
 </resources>

@@ -12,7 +12,7 @@ import com.example.hokkung.cardemo.R
 import com.example.hokkung.cardemo.model.Shop
 import kotlinx.android.synthetic.main.car_shop_item.view.*
 
-class ShopCarAdapter :  ListAdapter<Shop, RecyclerView.ViewHolder>(PostDiffCallBack()) {
+class ShopCarAdapter(val callback: onCardClickListener) :  ListAdapter<Shop, RecyclerView.ViewHolder>(PostDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.car_shop_item, parent, false))
@@ -21,6 +21,7 @@ class ShopCarAdapter :  ListAdapter<Shop, RecyclerView.ViewHolder>(PostDiffCallB
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         (holder as ViewHolder).setData(item)
+        (holder as ViewHolder).setOnClick(item, callback)
     }
 
     class PostDiffCallBack : DiffUtil.ItemCallback<Shop>() {
@@ -51,5 +52,15 @@ class ShopCarAdapter :  ListAdapter<Shop, RecyclerView.ViewHolder>(PostDiffCallB
             }
             Glide.with(view.context).load(image).into(view.image)
         }
+
+        fun setOnClick(item: Shop, callback: onCardClickListener) {
+            view.setOnClickListener {
+                callback.onCardItemClick(item)
+            }
+        }
+    }
+
+    interface onCardClickListener {
+        fun onCardItemClick(shop: Shop)
     }
 }

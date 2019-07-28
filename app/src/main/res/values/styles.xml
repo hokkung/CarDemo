@@ -34,14 +34,27 @@
     </style>
 
 
+
     <style name="TitileNameShopCard">
         <item name="android:textSize">20dp</item>
         <item name="android:fontFamily">@font/quicksand_bold</item>
         <item name="android:textColor">@color/colorDarkGray</item>
     </style>
 
+    <style name="TitileSmall">
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/quicksand_bold</item>
+        <item name="android:textColor">@color/colorDarkGray</item>
+    </style>
+
     <style name="DescriptionShopCard">
         <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/colorGray</item>
+    </style>
+
+    <style name="DescriptionSmall">
+        <item name="android:textSize">14dp</item>
         <item name="android:fontFamily">@font/quicksand_medium</item>
         <item name="android:textColor">@color/colorGray</item>
     </style>

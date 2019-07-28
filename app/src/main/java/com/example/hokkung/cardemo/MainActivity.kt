@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
 
 
     companion object {
-
         private val REQUEST_PERMISSON by lazy { 0 }
         private val tag by lazy { "MainActivity" }
     }
@@ -42,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, permissions, REQUEST_PERMISSON)
         } else {
             launchActivity(MainMenuActivity::class.java)
+            finish()
         }
     }
 
@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.v(tag, grantResults.toString())
                     launchActivity(MainMenuActivity::class.java)
+                    finish()
                     return
                 }
             }
